@@ -17,10 +17,25 @@ public class SelenideRepositorySoftAssertionsSearch {
     }
 
     @Test
-    void softAssertionsShouldHaveJUnit5ExamplesTest() {
+    void softAssertionsShouldHaveJUnit5CodeExampleTest() {
+
+        String JUnit5CodeExample = """
+        
+        @ExtendWith({SoftAssertsExtension.class})
+        class Tests {
+            @Test
+            void test() {
+                Configuration.assertionMode = SOFT;
+                open("page.html");
+
+                $("#first").should(visible).click();
+                $("#second").should(visible).click();
+            }
+        }        
+                """;
         open("/selenide/selenide");
         $("#wiki-tab").click();
         $(".markdown-body").$(byText("Soft assertions")).click();
-        $(".markdown-body").$(byText("3. Using JUnit5 extend test class:")).sibling(0).shouldHave(text("@ExtendWith")).shouldHave(text("SoftAssertsExtension.class")).shouldHave(text("@Test"));
+        $(".markdown-body").$(byText("3. Using JUnit5 extend test class:")).sibling(0).shouldHave(text(JUnit5CodeExample));
     }
 }
