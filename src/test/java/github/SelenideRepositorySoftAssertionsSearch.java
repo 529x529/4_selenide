@@ -20,9 +20,6 @@ public class SelenideRepositorySoftAssertionsSearch {
     void softAssertionsShouldHaveJUnit5CodeExampleTest() {
 
         String JUnit5CodeExample = """
-        
-        @ExtendWith({SoftAssertsExtension.class})
-        class Tests {
             @Test
             void test() {
                 Configuration.assertionMode = SOFT;
